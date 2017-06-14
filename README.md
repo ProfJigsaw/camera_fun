@@ -109,21 +109,17 @@ javascript:
         });
     }
 
-    // Elements for taking the snapshot
     var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
     var video = document.getElementById('video');
 
-    // Trigger photo take
     document.getElementById("snap").addEventListener("click", function () {
         context.drawImage(video, 0, 0, 320, 240);
         var dataUrl = canvas.toDataURL('image/png');
         $.ajax({
             type: "POST",
             url: "#{update_image_image_path}",
-            data: {
-                imgBase64: dataUrl
-            }
+            data: { imgBase64: dataUrl }
         }).success(function (o) {
             console.log('saved: ' + o);
             $('#video').hide();
