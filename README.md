@@ -156,7 +156,7 @@ $.ajaxSetup({
 ## Heroku
 
     heroku login
-    heroku apps:create camera_fun
+    heroku apps:create camera-fun
     heroku buildpacks:set heroku/ruby
     heroku buildpacks:add --index 1 heroku/nodejs
     git push heroku master
