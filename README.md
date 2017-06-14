@@ -8,6 +8,8 @@ cd camera_fun
 
 ### Gemfile
 
+Add this line:
+
     gem 'slim-rails'
 
 Run
