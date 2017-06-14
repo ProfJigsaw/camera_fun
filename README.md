@@ -2,7 +2,7 @@ Camera
 ======
 
 ```
-rails new camera_fun -d postgresql
+rails new camera_fun -d postgresql --webpack
 cd camera_fun
 ```
 
@@ -155,6 +155,19 @@ $.ajaxSetup({
 });
 ```
 
-# Cleanup
+## Heroku
 
-    brew remove yarn
+    heroku login
+
+### Gemfile
+
+At the end of Gemfile add:
+
+```ruby
+ruby "2.4.1"
+```
+
+### init
+
+    heroku apps:create camera_fun
+    git push heroku master
