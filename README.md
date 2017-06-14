@@ -169,3 +169,5 @@ ruby "2.4.1"
     heroku buildpacks:set heroku/ruby
     heroku buildpacks:add --index 1 heroku/nodejs
     git push heroku master
+    heroku run rake db:migrate
+    heroku open
