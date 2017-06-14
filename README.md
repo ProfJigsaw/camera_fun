@@ -9,7 +9,6 @@ cd camera_fun
 ### Gemfile
 
     gem 'slim-rails'
-    gem 'therubyracer', platforms: :ruby
 
 Run
 
