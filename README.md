@@ -2,13 +2,14 @@ Camera
 ======
 
 ```
-rails new camera_fun -d postgresql --webpack
+rails new camera_fun -d postgresql
 cd camera_fun
 ```
 
 ### Gemfile
 
     gem 'slim-rails'
+    gem 'webpacker' # Only needed to trigger installation of yarn on heroku
 
 Run
 
