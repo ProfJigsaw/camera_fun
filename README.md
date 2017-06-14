@@ -43,8 +43,8 @@ Edit `config/routes.rb`.
 
 ```ruby
   def inline
-    image = Image.new(params.required(:id))
-    send_data(send_data image.content, type: image.content_type, disposition: 'inline')
+    image = Image.find(params[:id])
+    send_data(image.content, type: image.content_type, disposition: 'inline')
   end
   
   def update_image
