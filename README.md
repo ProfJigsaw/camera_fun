@@ -156,17 +156,6 @@ $.ajaxSetup({
 ## Heroku
 
     heroku login
-
-### Gemfile
-
-At the end of Gemfile add:
-
-```ruby
-ruby "2.4.1"
-```
-
-### init
-
     heroku apps:create camera_fun
     heroku buildpacks:set heroku/ruby
     heroku buildpacks:add --index 1 heroku/nodejs
