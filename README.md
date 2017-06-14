@@ -156,6 +156,8 @@ $.ajaxSetup({
 ## Heroku
 
     heroku login
+    git add .
+    git commit -m "Initial commit"
     heroku apps:create camera-fun
     heroku buildpacks:set heroku/ruby
     heroku buildpacks:add --index 1 heroku/nodejs
