@@ -1,0 +1,21 @@
+h1 Camera Fun
+
+table
+  thead
+    tr
+      th ID
+      th Created
+      th Size
+
+  tbody
+    - @images.each do |image|
+      tr valign="top"
+        td = link_to image.id, image
+        td = image.created_at.strftime('%F %R')
+        td = image.content&.size
+        - if image.content.present?
+          td: img height=120 src="data:#{image.content_type};base64,#{Base64.strict_encode64(image.content)}"
+
+br
+
+= link_to 'New Image', images_path(image: {filename: 'Portrait'}), method: :post

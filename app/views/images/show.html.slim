@@ -1,0 +1,43 @@
+- has_image = @image.persisted? && @image.content.present?
+
+img#image.w-100.mb-3 src=(inline_image_path(@image) if has_image)
+
+video#video.text-center.w-100 width="320" height="240" autoplay='autoplay' style=('display: none' if has_image)
+canvas#canvas width="320" height="240" style='display: none'
+
+.text-center.mb-3: button#snap.btn.btn-primary type="button" Ta bilde
+
+javascript:
+    // Grab elements, create settings, etc.
+    var video = document.getElementById('video');
+
+    // Get access to the camera!
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        // Not adding `{ audio: true }` since we only want video now
+        navigator.mediaDevices.getUserMedia({video: true}).then(function (stream) {
+            video.src = window.URL.createObjectURL(stream);
+            video.play();
+        });
+    }
+
+    // Elements for taking the snapshot
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var video = document.getElementById('video');
+
+    // Trigger photo take
+    document.getElementById("snap").addEventListener("click", function () {
+        context.drawImage(video, 0, 0, 320, 240);
+        var dataUrl = canvas.toDataURL('image/png');
+        $.ajax({
+            type: "POST",
+            url: "#{update_image_image_path}",
+            data: {
+                imgBase64: dataUrl
+            }
+        }).success(function (o) {
+            console.log('saved: ' + o);
+            $('#video').hide();
+            $('#image').attr('src', "#{inline_image_path(@image)}?hash=" + o)
+        });
+    });
