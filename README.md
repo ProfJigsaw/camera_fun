@@ -9,7 +9,6 @@ cd camera_fun
 ### Gemfile
 
     gem 'slim-rails'
-    gem 'webpacker' # Only needed to trigger installation of yarn on heroku
 
 Run
 
@@ -167,4 +166,6 @@ ruby "2.4.1"
 ### init
 
     heroku apps:create camera_fun
+    heroku buildpacks:set heroku/ruby
+    heroku buildpacks:add --index 1 heroku/nodejs
     git push heroku master
